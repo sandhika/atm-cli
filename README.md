@@ -1,7 +1,7 @@
-oclif-hello-world
+ATM-CLI
 =================
 
-oclif example Hello World CLI
+Command Line Interface (CLI) to simulate an interaction of an ATM with a retail bank
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
@@ -16,7 +16,13 @@ oclif example Hello World CLI
 # Usage
 <!-- usage -->
 ```sh-session
+$ cd atm-cli
+
 $ npm install -g atm-cli
+or
+$ npm install -g .
+
+
 $ atm-cli COMMAND
 running command...
 $ atm-cli (--version)
@@ -29,56 +35,33 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`atm-cli hello PERSON`](#atm-cli-hello-person)
-* [`atm-cli hello world`](#atm-cli-hello-world)
+* [`atm-cli deposit [AMOUNT]`](#atm-cli-deposit-amount)
 * [`atm-cli help [COMMAND]`](#atm-cli-help-command)
-* [`atm-cli login [FILE]`](#atm-cli-login-file)
+* [`atm-cli login NAME`](#atm-cli-login-name)
+* [`atm-cli logout [FILE]`](#atm-cli-logout-file)
 * [`atm-cli plugins`](#atm-cli-plugins)
 * [`atm-cli plugins:inspect PLUGIN...`](#atm-cli-pluginsinspect-plugin)
 * [`atm-cli plugins:install PLUGIN...`](#atm-cli-pluginsinstall-plugin)
 * [`atm-cli plugins:link PLUGIN`](#atm-cli-pluginslink-plugin)
 * [`atm-cli plugins:uninstall PLUGIN...`](#atm-cli-pluginsuninstall-plugin)
 * [`atm-cli plugins update`](#atm-cli-plugins-update)
+* [`atm-cli status [NAME]`](#atm-cli-status-name)
+* [`atm-cli transfer [TARGET] [AMOUNT]`](#atm-cli-transfer-target-amount)
+* [`atm-cli withdraw [AMOUNT]`](#atm-cli-withdraw-amount)
 
-## `atm-cli hello PERSON`
+## `atm-cli deposit [AMOUNT]`
 
-Say hello
-
-```
-USAGE
-  $ atm-cli hello [PERSON] -f <value>
-
-ARGUMENTS
-  PERSON  Person to say hello to
-
-FLAGS
-  -f, --from=<value>  (required) Whom is saying hello
-
-DESCRIPTION
-  Say hello
-
-EXAMPLES
-  $ oex hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
-```
-
-_See code: [dist/commands/hello/index.ts](https://github.com/sandhika/atm-cli/blob/v0.0.1/dist/commands/hello/index.ts)_
-
-## `atm-cli hello world`
-
-Say hello world
+`deposit [amount]` - Deposits this amount to the logged in customer
 
 ```
 USAGE
-  $ atm-cli hello world
+  $ atm-cli deposit [AMOUNT]
 
 DESCRIPTION
-  Say hello world
-
-EXAMPLES
-  $ oex hello world
-  hello world! (./src/commands/hello/world.ts)
+  `deposit [amount]` - Deposits this amount to the logged in customer
 ```
+
+_See code: [dist/commands/deposit.ts](https://github.com/sandhika/atm-cli/blob/v0.0.1/dist/commands/deposit.ts)_
 
 ## `atm-cli help [COMMAND]`
 
@@ -100,26 +83,39 @@ DESCRIPTION
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.11/src/commands/help.ts)_
 
-## `atm-cli login [FILE]`
+## `atm-cli login NAME`
 
-describe the command here
+`login [name]` - Logs in as this customer and creates the customer if not exist
 
 ```
 USAGE
-  $ atm-cli login [FILE] [-n <value>] [-f]
+  $ atm-cli login [NAME] [-f <value>]
+
+ARGUMENTS
+  NAME  Customer name for login
 
 FLAGS
-  -f, --force
-  -n, --name=<value>  name to print
+  -f, --from=<value>  Whom is saying hello
 
 DESCRIPTION
-  describe the command here
-
-EXAMPLES
-  $ atm-cli login
+  `login [name]` - Logs in as this customer and creates the customer if not exist
 ```
 
 _See code: [dist/commands/login.ts](https://github.com/sandhika/atm-cli/blob/v0.0.1/dist/commands/login.ts)_
+
+## `atm-cli logout [FILE]`
+
+Logs out of the current customer
+
+```
+USAGE
+  $ atm-cli logout [FILE]
+
+DESCRIPTION
+  Logs out of the current customer
+```
+
+_See code: [dist/commands/logout.ts](https://github.com/sandhika/atm-cli/blob/v0.0.1/dist/commands/logout.ts)_
 
 ## `atm-cli plugins`
 
@@ -194,7 +190,7 @@ ALIASES
   $ atm-cli plugins add
 
 EXAMPLES
-  $ atm-cli plugins:install myplugin 
+  $ atm-cli plugins:install myplugin
 
   $ atm-cli plugins:install https://github.com/someuser/someplugin
 
@@ -266,4 +262,181 @@ FLAGS
 DESCRIPTION
   Update installed plugins.
 ```
+
+## `atm-cli status [NAME]`
+
+describe the command here
+
+```
+USAGE
+  $ atm-cli status [NAME]
+
+DESCRIPTION
+  describe the command here
+```
+
+_See code: [dist/commands/status.ts](https://github.com/sandhika/atm-cli/blob/v0.0.1/dist/commands/status.ts)_
+
+## `atm-cli transfer [TARGET] [AMOUNT]`
+
+`transfer [target] [amount]` - Transfers this amount from the logged in customer to the target customer
+
+```
+USAGE
+  $ atm-cli transfer [TARGET] [AMOUNT]
+
+DESCRIPTION
+  `transfer [target] [amount]` - Transfers this amount from the logged in customer to the target customer
+```
+
+_See code: [dist/commands/transfer.ts](https://github.com/sandhika/atm-cli/blob/v0.0.1/dist/commands/transfer.ts)_
+
+## `atm-cli withdraw [AMOUNT]`
+
+`withdraw [amount]` - Withdraws this amount from the logged in customer
+
+```
+USAGE
+  $ atm-cli withdraw [AMOUNT]
+
+DESCRIPTION
+  `withdraw [amount]` - Withdraws this amount from the logged in customer
+```
+
+_See code: [dist/commands/withdraw.ts](https://github.com/sandhika/atm-cli/blob/v0.0.1/dist/commands/withdraw.ts)_
 <!-- commandsstop -->
+* [`atm-cli login`](#atm-cli-login)
+* [`atm-cli logout`](#atm-cli-logout)
+* [`atm-cli status`](#atm-cli-status)
+* [`atm-cli deposit`](#atm-cli-deposit)
+* [`atm-cli withdraw`](#atm-cli-withdraw)
+* [`atm-cli transfer`](#atm-cli-transfer)
+## `atm-cli login`
+
+$ login Alice
+
+Hello, [NAME]!
+Your balance is $[amount]
+
+```
+USAGE
+  $ atm-cli login [NAME]
+
+ARGUMENTS
+  NAME  Person name for login
+
+DESCRIPTION
+  Logs in as this customer and creates the customer if not exist
+
+EXAMPLES
+  $ atm-cli login Alice
+  Hello, Alice!
+  Your balance is $0
+```
+## `atm-cli logout`
+
+$ logout
+
+Goodbye, [NAME]!
+
+```
+USAGE
+  $ atm-cli logout
+
+ARGUMENTS
+  -
+
+DESCRIPTION
+  Logs in as this customer and creates the customer if not exist
+
+EXAMPLES
+  $ atm-cli logout
+  Goodbye, Alice!
+```
+
+## `atm-cli deposit`
+
+$ deposit [amount]
+
+Your balance is $[amount]
+
+```
+USAGE
+  $ atm-cli deposit [amount]
+
+ARGUMENTS
+  AMOUNT
+
+DESCRIPTION
+  Deposits this amount to the logged in customer
+
+EXAMPLES
+  $ atm-cli deposit 80
+  Your balance is $80
+```
+
+## `atm-cli withdraw`
+
+$ withdraw [amount]
+
+Your balance is $[amount]
+
+```
+USAGE
+  $ atm-cli withdraw [amount]
+
+ARGUMENTS
+  AMOUNT
+
+DESCRIPTION
+  Withdraws this amount from the logged in customer
+
+EXAMPLES
+  $ atm-cli withdraw 80
+  Your balance is $0
+```
+
+## `atm-cli transfer`
+
+$ transfer [amount] [name]
+
+Transferred $[amount] to [amount]
+Hello, [amount]!
+your balance is $[amount]
+
+```
+USAGE
+  $ atm-cli withdraw [amount]
+
+ARGUMENTS
+  AMOUNT  value for transfer
+  NAME    name of customer for transfer
+
+DESCRIPTION
+  Transfers this amount from the logged in customer to the target customer
+
+EXAMPLES
+  $ atm-cli transfer 80 Alice
+  Transferred $50 to Alice
+  Hello, Alice!
+  your balance is $30
+```
+
+
+## `atm-cli help [COMMAND]`
+
+Display help for atm-cli.
+
+```
+USAGE
+  $ atm-cli help [COMMAND] [-n]
+
+ARGUMENTS
+  COMMAND  Command to show help for.
+
+FLAGS
+  -n, --nested-commands  Include all nested commands in the output.
+
+DESCRIPTION
+  Display help for atm-cli.
+```
